@@ -10,7 +10,8 @@ from torchvision import transforms
 
 
 from my_dataset import MyDataSet
-from vit_model import vit_base_patch16_224_in21k as create_model
+# from vit_model import vit_base_patch16_224_in21k as create_model
+from vit_model import vit_base_patch32_224_in21k as create_model
 from utils import read_split_data, train_one_epoch, evaluate
 
 
@@ -128,7 +129,9 @@ if __name__ == '__main__':
     parser.add_argument('--model-name', default='', help='create model name')
 
     # 预训练权重路径，如果不想载入就设置为空字符
-    parser.add_argument('--weights', type=str, default='./pre_weights/vit_base_patch16_224_in21k.pth',
+    # parser.add_argument('--weights', type=str, default='./pre_weights/vit_base_patch16_224_in21k.pth',
+    #                     help='initial weights path')
+    parser.add_argument('--weights', type=str, default='./pre_weights/vit_base_patch32_224_in21k.pth',
                         help='initial weights path')
     # 是否冻结权重
     parser.add_argument('--freeze-layers', type=bool, default=True)

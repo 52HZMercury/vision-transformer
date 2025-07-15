@@ -6,7 +6,8 @@ from PIL import Image
 from torchvision import transforms
 import matplotlib.pyplot as plt
 
-from vit_model import vit_base_patch16_224_in21k as create_model
+# from vit_model import vit_base_patch16_224_in21k as create_model
+from vit_model import vit_base_patch32_224_in21k as create_model
 
 
 def main():
@@ -20,7 +21,7 @@ def main():
 
     # load image
     # img_path = "./testImg/rose_test1.jpg"
-    img_path = "./testImg/daisy_test1.jpg"
+    img_path = "./testImg/dandelion_test4.jpg"
     assert os.path.exists(img_path), "file: '{}' dose not exist.".format(img_path)
     img = Image.open(img_path)
     plt.imshow(img)
@@ -39,7 +40,8 @@ def main():
     # create model
     model = create_model(num_classes=5, has_logits=False).to(device)
     # load model weights
-    model_weight_path = "./weights/model-9.pth"
+    # model_weight_path = "./weights/patch16_model-9.pth"
+    model_weight_path = "./weights/patch32_model-9.pth"
     model.load_state_dict(torch.load(model_weight_path, map_location=device))
     model.eval()
     with torch.no_grad():
